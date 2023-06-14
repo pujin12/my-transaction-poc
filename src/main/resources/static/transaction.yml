@@ -1,0 +1,34 @@
+openapi: 3.0.3
+info:
+  title: Transaction service API
+  description: APIs to get transaction details
+  version: 1.0.0
+paths:
+  /rewards:
+    get:
+      summary: Retrieve all rewards
+      operationId: getAllRewards
+      responses:
+        200:
+          description: Successfully fetched
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllRewardsResponse'
+components:
+  schemas:
+    Reward:
+      type: object
+      properties:
+        customerId:
+          type: integer
+          format: int64
+        points:
+          type: integer
+    GetAllRewardsResponse:
+      type: object
+      properties:
+        rewards:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reward'
